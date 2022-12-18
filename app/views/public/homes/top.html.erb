@@ -34,8 +34,28 @@
       <h3 class="my-3">新着商品</h3>
     </div>
   </div>
-  <div class="row col-md-10 float-right">
+  <div class="row ">
+    <!--共有後書き換え必要-->
     <!--販売中の商品-->
+    <!--<  % items.each do |item| %>-->
+      <div class="card" style="width:10rem;">
+        <img class="card-img-top" src="/assets/logo.png">
+        <!--<img class="card-img-top">-->
+          <!--商品画像「get_item_image(100,60)」は定義してから使う-->
+          <!--<  % image_tag item.get_item_image(100,60) %>-->
+        <div class="card-body">
+          <h5 class="card-title">
+            ケーキ
+            <!--<  %= link_to item.name, item %>-->
+          </h5>
+          <h6 class="card-subtitle">
+            ¥550
+            <!--XXX_priceで税込価格を定義しておく?-->
+            <!--¥<  %= item.XXX_price %>-->
+          </h6>
+        </div>
+      </div>
+    <!--<  % end %>-->
 
   </div>
 </div>
