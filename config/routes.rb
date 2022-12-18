@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   
   # 商品、ジャンルに関するルーティング
   namespace :public do
@@ -11,6 +12,11 @@ Rails.application.routes.draw do
     resources :genres, only: [:index,:create,:edit,:update]
   end
   
+
+  namespace :public do
+    resources :addresses, only: [:index,:show,:new,:create]
+  end
+
   devise_for :admins
   devise_for :customers
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
