@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   namespace :public do
     resources :addresses, only: [:index,:show,:new,:create]
   end
+  
+  namespace :admin do
+    resources :order_items, only: [:update]
+  end
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
