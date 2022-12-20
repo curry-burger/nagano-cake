@@ -25,8 +25,8 @@ end
     resources :genres, only: [:index,:create,:edit,:update]
   end
 
-  namespace :public do
-    resources :addresses, only: [:index,:show,:new,:create]
+  scope module: :public do
+    resources :addresses
   end
 
   namespace :admin do
