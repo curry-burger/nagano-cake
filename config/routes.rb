@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   namespace :public do
     get 'order_items/update'
   end
