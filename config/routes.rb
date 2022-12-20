@@ -1,20 +1,16 @@
 Rails.application.routes.draw do
 
-
-
   namespace :public do
     get 'order_items/update'
   end
 
 # ホーム、カート内商品のルーティング
-   scope module: :public do
+  scope module: :public do
     root :to =>'homes#top'
-    get 'about' => 'homes#about'
+    get 'about' => 'homes#about', as:'about'
     resources :cart_items, only: [:index,:update,:create,:destroy]
     delete 'cart_item/destroy_all' => 'cart_items#destroy_all' , as: 'destroy_all'
-   end
-
-
+  end
 
 
   # 商品、ジャンルに関するルーティング
@@ -27,7 +23,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres, only: [:index,:create,:edit,:update]
   end
-
 
   namespace :public do
     resources :addresses, only: [:index,:show,:new,:create]

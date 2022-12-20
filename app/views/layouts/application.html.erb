@@ -1,8 +1,3 @@
-
-shigeto
-
-murao.yuri
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -16,7 +11,16 @@ murao.yuri
   </head>
 
   <body>
-    <h1 class="text-primary">Bootstrapテスト</h1>
+    <br>
+    <%= link_to destroy_customer_session_path, method: :delete do %>
+      Log out
+    <% end %>
+    <%= link_to new_customer_session_path do %>
+      Log in
+    <% end %>
+    <%= link_to new_customer_registration_path do %>
+      Sign up
+    <% end %>
     <%= yield %>
   </body>
 </html>
