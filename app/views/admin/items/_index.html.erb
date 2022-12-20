@@ -1,0 +1,40 @@
+<table class='table'>
+  <thead class="table table-secondary">
+    <tr>
+      <th>商品ID</th>
+      <th>商品名</th>
+      <th>税抜価格</th>
+      <th>ジャンル</th>
+      <th>ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--ここからデータ読み込み-->
+    <% items.each do |item| %>
+    <tr>
+      <!--商品ID-->
+      <td class="align-middle"><p class="m-0"><%= item.id %></p></td>
+      <!--商品名-->
+      <td class="align-middle"><p class="m-0"><%= link_to item.name, admin_item_path(item.id) %></p></td>
+      <!--税抜価格-->
+      <td class="align-middle"><p class="m-0"><%= item.price %></p></td>
+      <!--ジャンル-->
+      <td class="align-middle"><p class="m-0"><%= item.genre.name %></p></td>
+      <!--販売ステータス-->
+      <td class="align-middle">
+        <% if item.status %>
+          <P class="text-success m-0 font-weight-bold">販売中</P>
+        <% else %>
+          <p class="m-0">販売停止中</p>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+    <!--ここまで-->
+  </tbody>
+</table>
+
+<!--ページネーション～kaminari～-->
+<div class="col-2 offset-5">
+  <%= paginate @items %>
+</div>
