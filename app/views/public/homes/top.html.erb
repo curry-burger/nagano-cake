@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-3">
+      <table class="table table-bordered">
+        <thead>
+          <tr align="center">
+            <th>ジャンル検索</th>
+          </tr>
+        </thead>
+        <tbody> <!--各ジャンルeach文で入れる-->
+          <tr>
+            <td>ケーキ</td>
+          </tr>
+          <tr>
+            <td>焼き菓子</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-8">
+      <div class="text-center">
+        <%= image_tag 'cake_top.jpg', width:'100%', height:'auto' %>
+        <div class="card-img-overlay">
+          <div class="background">
+            <p class="shadow-lg font-weight-bold">
+              ようこそ、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。<br>
+            </p>
+          </div>
+        </div>
+      </div>
+      <h3 class="my-3">新着商品</h3>
+    </div>
+  </div>
+  <div class="row ">
+    <!--共有後書き換え必要-->
+    <!--販売中の商品-->
+    <!--<  % items.each do |item| %>-->
+      <div class="card" style="width:10rem;">
+        <img class="card-img-top" src="/assets/logo.png">
+        <!--<img class="card-img-top">-->
+          <!--商品画像「get_item_image(100,60)」は定義してから使う-->
+          <!--<  % image_tag item.get_item_image(100,60) %>-->
+        <div class="card-body">
+          <h5 class="card-title">
+            ケーキ
+            <!--<  %= link_to item.name, item %>-->
+          </h5>
+          <h6 class="card-subtitle">
+            ¥550
+            <!--XXX_priceで税込価格を定義しておく?-->
+            <!--¥<  %= item.XXX_price %>-->
+          </h6>
+        </div>
+      </div>
+    <!--<  % end %>-->
+
+  </div>
+</div>
