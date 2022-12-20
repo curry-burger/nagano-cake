@@ -5,10 +5,15 @@ Rails.application.routes.draw do
   namespace :public do
     get 'order_items/update'
   end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+
+# ホーム、カート内商品のルーティング
+   scope module: :public do
+    root :to =>'homes#top'
+    get 'about' => 'homes#about'
+    resources :cart_items, only: [:index,:update,:create,:destroy]
+    delete 'cart_item/destroy_all' => 'cart_items#destroy_all' , as: 'destroy_all'
+   end
+
 
 
 
@@ -27,7 +32,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :addresses, only: [:index,:show,:new,:create]
   end
-  
+
   namespace :admin do
     resources :order_items, only: [:update]
   end
