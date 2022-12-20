@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'order_items/update'
+  scope module: :public do
+    root to:"homes#top"
+    get "about"=>"homes#about",as:"about"
+    resources :items, only: [:index,:show] # 追加
   end
 
 # ホーム、カート内商品のルーティング
@@ -14,9 +16,9 @@ Rails.application.routes.draw do
 
 
   # 商品、ジャンルに関するルーティング
-  namespace :public do
-    resources :items, only: [:index,:show]
-  end
+  # namespace :public do
+  #   resources :items, only: [:index,:show]
+  # end
   namespace :admin do
     resources :items, only: [:index,:new,:create,:show,:edit,:update]
   end
