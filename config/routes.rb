@@ -1,21 +1,24 @@
 Rails.application.routes.draw do
 
-
-
-  namespace :public do
-    get 'order_items/update'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
+  scope module: :public do
+  	root to:"homes#top"
+    get "about"=>"homes#about",as:"about"
+    resources :items, only: [:index,:show] # 追加
   end
 
 
+  # namespace :public do
+  #   get 'order_items/update'
+  # end
+  # namespace :public do
+  #   get 'homes/top'
+  #   get 'homes/about'
+  # end
 
   # 商品、ジャンルに関するルーティング
-  namespace :public do
-    resources :items, only: [:index,:show]
-  end
+  # namespace :public do
+  #   resources :items, only: [:index,:show]
+  # end
   namespace :admin do
     resources :items, only: [:index,:new,:create,:show,:edit,:update]
   end
@@ -23,10 +26,10 @@ Rails.application.routes.draw do
     resources :genres, only: [:index,:create,:edit,:update]
   end
 
-
   namespace :public do
     resources :addresses, only: [:index,:show,:new,:create]
   end
+
 
    namespace :public do
     resources :orders

@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# ジャンルの初期値
+Genre.create(
+  [
+    {
+      name: 'ケーキ',
+    },
+    {
+      name: '焼き菓子',
+    },
+    {
+      name: 'プリン',
+    },
+    {
+      name: 'キャンディ',
+    }
+  ]
+)
