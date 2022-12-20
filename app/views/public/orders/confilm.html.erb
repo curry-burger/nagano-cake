@@ -1,0 +1,71 @@
+<div class="container">
+  <h2 class="px-3 my-3 col-md-4 text-center">注文情報確認</h2>
+  <div class="row">
+    <div class="col-8">
+      <table class="table table-bordered">
+        <thead class="table-active">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込み）</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <% @sum = 0 %>
+          <tr>
+            <td>
+              <%= image_tag cart_item.product.get_product_image,size: "70x60" %>
+              <%= cart_item.product.name %>
+            </td>
+            <td><%= cart_item.product.with_tax_price %></td>
+            <td><%= cart_item.quantity %></td>
+            <td><%= @sum += cart_item.sub_total %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3  offset-1">
+      <table class="table table-bordered table-sm">
+        <tr>
+          <th class="table-active">商品合計</th>
+          <td><%= @total_price %></td>
+        </tr>
+        <tr>
+          <th class="table-active">送料</th>
+          <td>800</td>
+        </tr>
+        <tr>
+          <th class="table-active">請求金額</th>
+          <td><%= @total_price + 800 %></td>
+        </tr>
+      </table>
+      </div>
+      <table class="col-md-9 table table-borderless">
+        <tr>
+          <th>支払い方法</th>
+          <td><%= @order.method_of_payment_i18n %></td>
+        </tr>
+        <tr>
+          <th>お届け先</th>
+          <td><%= @order.address_display %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-1 mt-5 mb-5 mx-auto">
+      <%= form_with model:@order_new,method: :post do |f| %>
+        <%= f.hidden_field:customer_id,value:current_customer.id %>
+        <%= f.hidden_field:order_status,value:Order.order_statuses.key(0) %>
+        <%= f.hidden_field:name,value:@order.name %>
+        <%= f.hidden_field:post_code,value:@order.post_code %>
+        <%= f.hidden_field:address,value:@order.address %>
+        <%= f.hidden_field:postage,value:800 %>
+        <%= f.hidden_field:total_payment,value:@total_price + 800 %>
+        <%= f.hidden_field:method_of_payment,value:@order.method_of_payment %>
+       <%= f.submit "注文を確定する",class:"btn btn-lg btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>
