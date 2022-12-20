@@ -11,9 +11,16 @@
   </head>
 
   <body>
+    <br>
+    <%= link_to destroy_customer_session_path, method: :delete do %>
+      Log out
+    <% end %>
+    <%= link_to new_customer_session_path do %>
+      Log in
+    <% end %>
+    <%= link_to new_customer_registration_path do %>
+      Sign up
+    <% end %>
     <%= yield %>
-     <%= link_to destroy_customer_session_path, method: :delete do %>
-        Log out
-      <% end %>
   </body>
 </html>
