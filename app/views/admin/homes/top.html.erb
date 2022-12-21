@@ -15,7 +15,7 @@
  <div class="row">
   <div class="col-sm-12 col-md-11 col-lg-8  mx-auto">
    <br>
-  <h3>注文履歴一覧</h3>
+　 <h3>注文履歴一覧</h3>
    <table class='table table-hover'>
     <thead>
       <tr class="table-active">
@@ -24,21 +24,21 @@
         <th>注文個数</th>
         <th>注文ステータス</th>
       </tr>
-   </thead>
+      </thead>
     <tbody>
       <% @orders.each do |order| %>
       <tr>
         <td><%= link_to order.created_at.strftime('%Y/%m/%d %H:%M:%S'), admin_order_path(order) %></td>
         <td>
-         <%= order.customer.last_name %>
-         <%= order.customer.first_name %>
+          <%= order.customer.last_name %>
+          <%= order.customer.first_name %>
         </td>
-        <td><%= order.order_details.where(order_id: order.id).sum(:quantity) %></td>
+        <td><%= order.order_items.where(order_id: order.id).sum(:count) %></td>
         <td><%= order.order_status_i18n %></td>
       </tr>
       <% end %>
     </tbody>
-    </table>
+   </table>
    <div class="col-md-5 mx-auto"><%= paginate @orders, theme: 'bootstrap-5' %></div>
   </div>
  </div>
