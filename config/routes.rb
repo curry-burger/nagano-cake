@@ -33,7 +33,10 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :order_items, only: [:update]
   end
-
+  
+  namespace :admin do
+  resources:customers,only: [:index,:show,:edit,:update]
+  end
 #scopeの中はpublicがurlに入らない
     scope module: :public do
   resources:orders,only: [:new,:create,:index]
