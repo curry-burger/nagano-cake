@@ -24,9 +24,7 @@
         <% @items.each do |item| %>
           <div class="mx-3 my-3">
             <%= link_to item_path(item) do %>
-            <!--⬇︎修正の必要あり-->
-            <%#= image_tag item.get_item_image, size: "200x160" %>
-              商品名
+            <%= image_tag item.item_image, size: "200x160" %>
             <% end %><br>
             <%= item.name %><br>
             ¥<%= item.price %>
