@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-    scope module: :public do
-	root to:"homes#top"
-  get "about"=>"homes#about",as:"about"
-end
+  scope module: :public do
+  	root to:"homes#top"
+    get "about"=>"homes#about",as:"about"
+    resources :items, only: [:index,:show] # 追加
+  end
 
 
   # namespace :public do
@@ -15,9 +16,9 @@ end
   # end
 
   # 商品、ジャンルに関するルーティング
-  namespace :public do
-    resources :items, only: [:index,:show]
-  end
+  # namespace :public do
+  #   resources :items, only: [:index,:show]
+  # end
   namespace :admin do
     resources :items, only: [:index,:new,:create,:show,:edit,:update]
   end
@@ -25,12 +26,20 @@ end
     resources :genres, only: [:index,:create,:edit,:update]
   end
 
-  namespace :public do
-    resources :addresses, only: [:index,:show,:new,:create]
+  scope module: :public do
+    resources :addresses
   end
 
   namespace :admin do
     resources :order_items, only: [:update]
+  end
+
+#scopeの中はpublicがurlに入らない
+    scope module: :public do
+  resources:orders,only: [:new,:create,:index]
+  post "orders/confirm"=>"orders#confirm",as:"confirm"
+  get "orders/complete"=>"orders#complete",as:"complete"
+  get "orders/:id"=>"orders#show",as:"order"
   end
 
 
