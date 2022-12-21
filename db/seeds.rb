@@ -23,3 +23,18 @@ Genre.create(
     }
   ]
 )
+
+
+5.times do |n|
+  item = Item.create!(
+    genre_id: n + 1,
+    name: 'チーズケーキ',
+    description: '新商品！',
+    price: 500,
+    status: true
+  )
+  item.item_image.attach(io: File.open(Rails.root.join("app/assets/images/cake1.jpg")),
+  filename: "cake1.jpg"
+
+  )
+end
