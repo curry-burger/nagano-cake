@@ -26,12 +26,20 @@ Rails.application.routes.draw do
     resources :genres, only: [:index,:create,:edit,:update]
   end
 
-  namespace :public do
-    resources :addresses, only: [:index,:show,:new,:create]
+  scope module: :public do
+    resources :addresses
   end
 
   namespace :admin do
     resources :order_items, only: [:update]
+  end
+
+#scopeの中はpublicがurlに入らない
+    scope module: :public do
+  resources:orders,only: [:new,:create,:index]
+  post "orders/confirm"=>"orders#confirm",as:"confirm"
+  get "orders/complete"=>"orders#complete",as:"complete"
+  get "orders/:id"=>"orders#show",as:"order"
   end
 
 
