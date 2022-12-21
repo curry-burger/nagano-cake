@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   	root to:"homes#top"
     get "about"=>"homes#about",as:"about"
     resources :items, only: [:index,:show] # 追加
+    #public/customersのルーティング
+    get "customers/my_page"=>"customers#show"
+    get "customers/infomation/edit"=>"customers#edit"
+    patch "customers/infomation"=>"customers#update"
+    get "customers/confirm"=>"customers#confirm"
+    patch "customers/exit"=>"customers#exit"
   end
 
 
