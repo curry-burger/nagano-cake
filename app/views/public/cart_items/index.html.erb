@@ -1,5 +1,5 @@
 <div class="container">
-  <% if @cart_items.blank? %>
+  <%# if @cart_items.blank? %>
   <div class="row mt-9 d-flex justify-content-between">
     <div class="m-3 bg-light">
       <h5>ショッピングカート</h5>
@@ -25,7 +25,7 @@
         <tr>
           <td>
             <!--商品画像・商品名-->
-            <%= image_tag cart_item.item.get_image, size:"80x60" %><!--get_image(80,60)は定義してから-->
+            <%= image_tag cart_item.item.get_image, size:"80x60" %>
             <%= cart_item.item.name %>
           </td>
           <td>
@@ -39,7 +39,7 @@
             <%= link_to "変更", cart_item_path, method: :patch, class: "btn btn-success" %>
           </td>
           <td>
-            小計
+            <!--小計-->
             <%= cart_item.subtotal %> %>
           </td>
           <td>削除する<%= link_to "削除する", cart_item_path(cart_item), method: :delete, class: "btn btn-danger" %></td>
