@@ -20,10 +20,15 @@ class Public::CustomersController < ApplicationController
   end
 
   def confirm
+    @customer = current_customer
   end
 
   def exit
-
+    @customer = current_customer
+    @customer.update(id_deleted: true)
+    reset_session
+    flash[:notice] = "退会しました。またのご利用をお待ちしております。"
+    redirect_to root_path
   end
 
   private
