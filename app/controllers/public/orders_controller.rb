@@ -54,9 +54,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    #@order=Order.find(params[:id])
-    #@total_price = OrderDetail.total_price(@order)
-    #@order_details=OrderDetail.where(order_id:params[:id])
+    @order=Order.find(params[:id])
+    @total_price = OrderDetail.total_price(@order)
+    @order_details=OrderDetail.where(order_id:params[:id])
   end
 
   private
