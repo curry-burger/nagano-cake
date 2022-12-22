@@ -1,19 +1,12 @@
 Rails.application.routes.draw do
 
   scope module: :public do
-  	root to:"homes#top"
+    root to:"homes#top"
     get "about"=>"homes#about",as:"about"
-    resources :items, only: [:index,:show] # 追加
+    resources :items, only: [:index,:show]
+    resources :cart_items, only: [:index,:update,:create,:destroy]
+    delete 'cart_item/destroy_all' => 'cart_items#destroy_all' , as: 'destroy_all'
   end
-
-
-  # namespace :public do
-  #   get 'order_items/update'
-  # end
-  # namespace :public do
-  #   get 'homes/top'
-  #   get 'homes/about'
-  # end
 
   # 商品、ジャンルに関するルーティング
   # namespace :public do
