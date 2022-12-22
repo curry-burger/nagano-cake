@@ -4,9 +4,9 @@
       <h5>ショッピングカート</h5>
     </div>
     <div>
-      <%# unless @cart_items.empty? %>
+      <% unless @cart_items.empty? %>
         <%= link_to "カートを空にする", destroy_all_path(@cart_items), method: :delete, class: "btn btn-danger" %>
-      <%# end %>
+      <% end %>
     </div>
   </div>
 
@@ -58,6 +58,7 @@
     </div>
 
     <div class="col-md-4 pr-0">
+    <% @cart_items.each do |cart_item| %>
       <table class="table table-bordered">
         <tr>
           <th class="row table-secondary">合計金額</th>
@@ -65,7 +66,7 @@
         </tr>
       </table>
     </div>
-
+    <% end %>
     <div class="mt-5 text-center">
       <% if @cart_items.present? %>
         <%= link_to "情報入力に進む", cart_items_path ,class: "btn btn-success" %>
