@@ -41,7 +41,7 @@
       <div class="row ml-1">
         <% @items.last(4).reverse.each do |item| %>
           <%= link_to item_path(item), class:"col-3 text-dark" do %>
-            <% image_tag item.get_image, size:"200x150" %><br>
+            <%= image_tag item.get_image, size:"200x150" %><br>
             <%= item.name %><br>
             ¥<%= item.price.to_s(:delimited) %>
           <% end %>
