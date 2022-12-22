@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :order_items, only: [:update]
   end
-  
+
   namespace :admin do
   resources:customers,only: [:index,:show,:edit,:update]
   end
@@ -45,7 +45,9 @@ Rails.application.routes.draw do
   get "orders/:id"=>"orders#show",as:"order"
   end
 
-
+  namespace :admin do
+    root to:'homes#top'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
  devise_for :customers,skip:[:passwords],controllers: {
