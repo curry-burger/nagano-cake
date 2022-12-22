@@ -9,6 +9,11 @@ Rails.application.routes.draw do
     resources :items, only: [:index,:show] # 追加
   end
 
+  namespace :admin do
+    resources :orders, only: [:show,:update]
+  end
+
+
 
   # namespace :public do
   #   get 'order_items/update'
