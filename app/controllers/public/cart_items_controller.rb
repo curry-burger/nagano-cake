@@ -1,7 +1,8 @@
 class Public::CartItemsController < ApplicationController
+  before_action :authenticate_customer!
 
   def index
-    @cart_items = current_customer.cart_items
+    @cart_items = current_customer.cart_items.all
     @total_price = 0
   end
 
@@ -31,7 +32,7 @@ class Public::CartItemsController < ApplicationController
       cart_item.customer_id = current_customer.id
       cart_item.save
     end
-    redirect_to cart_items_path
+      redirect_to cart_items_path
   end
 
   private
