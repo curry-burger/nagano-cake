@@ -21,6 +21,7 @@
     <%= link_to new_customer_registration_path do %>
       Sign up
     <% end %>
+    <%= flash[:notice] %>
     <%= yield %>
   </body>
 </html>
