@@ -32,13 +32,13 @@ class Public::OrdersController < ApplicationController
     @cart_items=current_customer.cart_items.all
 
     @cart_items.each do |cart_item|
-      @order_details=OrderDetail.new
-      @order_details.order_id=@order.id
-      @order_details.product_id=cart_item.product.id
-      @order_details.tax_price=cart_item.product.with_tax_price
-      @order_details.quantity=cart_item.quantity
-      @order_details.making_status=0
-      @order_details.save
+      @order_items=OrderItem.new
+      @order_items.order_id=@order.id
+      @order_items.product_id=cart_item.product.id
+      @order_items.tax_price=cart_item.product.with_tax_price
+      @order_items.quantity=cart_item.quantity
+      @order_items.making_status=0
+      @order_items.save
     end
 
     CartItem.destroy_all
@@ -55,8 +55,8 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order=Order.find(params[:id])
-    @total_price = OrderDetail.total_price(@order)
-    @order_details=OrderDetail.where(order_id:params[:id])
+    @total_price = OrderItem.total_price(@order)
+    @order_items=OrderItem.where(order_id:params[:id])
   end
 
   private

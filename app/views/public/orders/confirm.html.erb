@@ -16,12 +16,12 @@
           <% @sum = 0 %>
           <tr>
             <td>
-              <%= image_tag cart_item.product.get_product_image,size: "70x60" %>
-              <%= cart_item.product.name %>
+              <%= image_tag cart_item.item.get_image,size: "70x60" %>
+              <%= cart_item.item.name %>
             </td>
-            <td><%= cart_item.product.with_tax_price %></td>
-            <td><%= cart_item.quantity %></td>
-            <td><%= @sum += cart_item.sub_total %></td>
+            <td><%= cart_item.item.with_tax_price %></td>
+            <td><%= cart_item.count %></td>
+            <td><%= @sum += cart_item.subtotal %></td>
           </tr>
           <% end %>
         </tbody>
@@ -46,7 +46,7 @@
       <table class="col-md-9 table table-borderless">
         <tr>
           <th>支払い方法</th>
-          <td><%= @order.method_of_payment_i18n %></td>
+          <td><%#= @order.method_of_payment_i18n %></td>
         </tr>
         <tr>
           <th>お届け先</th>
