@@ -35,8 +35,16 @@ Genre.create(
   )
   item.item_image.attach(io: File.open(Rails.root.join("app/assets/images/cake1.jpg")),
   filename: "cake1.jpg"
-
   )
 end
 
-Admin.create!( email: "ad@ad", password: "qazpl,")
+Admin.create!(
+  email: "ad@ad",
+  password: "qazpl,"
+)
+
+CartItem.create!(
+    item_id: 1,
+    customer_id: 1,
+    count: 2,
+)
