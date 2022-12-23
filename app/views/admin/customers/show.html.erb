@@ -35,7 +35,7 @@
           <tr>
             <th style="width: 150px" class="align-middle">会員ステータス</th>
              <td>
-               <% if @customer.is_deleted %>
+               <% if @customer.id_deleted %>
                 <p class="text-muted font-weight-bold align-middle">退会</p>
                <% else %>
                 <p class="text-success font-weight-bold">有効</p>
