@@ -4,7 +4,7 @@ class OrderItem < ApplicationRecord
   enum making_status: {can_not_start: 0, waiting_for_production: 1, production: 2, completed: 3}
 
   def sub_total
-    quantity*product.with_tax_price
+    count*product.with_tax_price
   end
 
   def self.total_price(order)
