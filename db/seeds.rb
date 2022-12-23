@@ -38,3 +38,8 @@
 
 #   )
 #end
+
+Admin.create!(
+  email: "ad@ad",
+  password: "qazpl,"
+)
