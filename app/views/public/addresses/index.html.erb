@@ -15,12 +15,9 @@
           <tr>
             <th>宛名</th>
             <th><%= f.text_field:name, placeholder: "令和道子" %></th>
-          </tr>
-          <tr>
-            <th>電話番号(ハイフン無し)</th>
-            <th><%= f.text_field:phone_number,placeholder: "000000000" %></th>
             <th><%= f.submit "新規登録",class:"btn btn-success" %></th>
           </tr>
+          <th></th>
         <% end %>
       </table>
       <% if @addresses.exists? %>

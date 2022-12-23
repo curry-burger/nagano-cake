@@ -38,3 +38,16 @@
 
 #   )
 #end
+
+# Admin.create!(
+#   email: "ad@ad",
+#   password: "qazpl,"
+# )
+
+# 5.times do |n|
+#   CartItem.create!(
+#     item_id: n + 1,
+#     customer_id: n + 1,
+#     count: 2,
+#   )
+# end

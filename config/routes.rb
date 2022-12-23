@@ -24,10 +24,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :order_items, only: [:update]
-  end
-
-  namespace :admin do
   resources:customers,only: [:index,:show,:edit,:update]
   end
 #scopeの中はpublicがurlに入らない
@@ -40,6 +36,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to:'homes#top'
+    resources:order_items,only: [:update]
+    resources:orders,only: [:show,:update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
