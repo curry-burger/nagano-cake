@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-ジャンルの初期値
+# ジャンルの初期値
 Genre.create(
   [
     {
@@ -38,18 +38,13 @@ Genre.create(
   )
 end
 
-#   )
-#end
+Admin.create!(
+  email: "ad@ad",
+  password: "qazpl,"
+)
 
-# Admin.create!(
-#   email: "ad@ad",
-#   password: "qazpl,"
-# )
-
-# 5.times do |n|
-#   CartItem.create!(
-#     item_id: n + 1,
-#     customer_id: n + 1,
-#     count: 2,
-#   )
-# end
+CartItem.create!(
+    item_id: 1,
+    customer_id: 1,
+    count: 2,
+)
