@@ -1,33 +1,33 @@
 <div class='container px-5 px-sm-0'>
   <div class="row my-4">
-    <div class="col-md-8 offset-md-1">
-      <h4>注文履歴詳細</h4>
+    <div class="m-3 bg-light">
+      <h5>注文履歴詳細</h5>
     </div>
   </div>
-  
+
   <div class="row py-2">
     <div class="col-2"><strong>購入者</strong></div>
     <div class="col-5"><u><%= link_to @order.customer.full_name, admin_customer_path(@order), class: "text-dark"%></u></div>
   </div>
-  
+
   <div class="row py-2">
     <div class="col-2"><strong>注文日</strong></div>
     <div class="col-5"><%= @order.created_at.strftime('%Y/%m/%d') %></div>
   </div>
-  
+
   <div class="row py-2">
     <div class="col-2"><strong>配送先</strong></div>
     <div class="col-5">
-      <%= "〒" + @order.postal_code + " " + @order.address %><br>
+      <%= @order.customer.address_display %><br>
       <%= @order.name %>
     </div>
   </div>
-  
+
   <div class="row py-2">
     <div class="col-2"><strong>支払方法</strong></div>
     <div class="col-5"><%= Order.payment_methods_i18n[@order.payment_method] %></div>
   </div>
-  
+
   <div class="row py-2">
     <div class="col-2"><strong>注文ステータス</strong></div>
     <div class="col-5">
