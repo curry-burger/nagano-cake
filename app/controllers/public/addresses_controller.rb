@@ -29,7 +29,7 @@ class Public::AddressesController < ApplicationController
   private
 
   def address_params
-     params.require(:address).permit(:post_code,:address,:name,:phone_number)
+     params.require(:address).permit(:post_code,:address,:name)
   end
 
 end

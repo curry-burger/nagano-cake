@@ -24,9 +24,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :order_items, only: [:update]
+  resources:customers,only: [:index,:show,:edit,:update]
   end
-
 #scopeの中はpublicがurlに入らない
     scope module: :public do
   resources:orders,only: [:new,:create,:index]
@@ -35,7 +34,11 @@ Rails.application.routes.draw do
   get "orders/:id"=>"orders#show",as:"order"
   end
 
-
+  namespace :admin do
+    root to:'homes#top'
+    resources:order_items,only: [:update]
+    resources:orders,only: [:show,:update]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
  devise_for :customers,skip:[:passwords],controllers: {
