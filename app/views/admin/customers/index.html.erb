@@ -18,7 +18,7 @@
           <td><%= link_to customer.last_name, admin_customer_path(customer) %><%= link_to customer.first_name, admin_customer_path(customer) %></td>
           <td><%= customer.email %></td>
           <td>
-           <% if customer.is_deleted %>
+           <% if customer.id_deleted %>
            <p class="text-muted font-weight-bold">退会</p>
            <% else %>
            <P class="text-success font-weight-bold">有効</P>
@@ -29,6 +29,6 @@
       </tbody>
      </table>
    </div>
-   <div class="col-5 offset-4"><%= paginate @customers, theme: 'bootstrap-5' %></div>
+   <div class="col-5 offset-4"><%#= paginate @customers, theme: 'bootstrap-5' %></div>
   </div>
 </div>
