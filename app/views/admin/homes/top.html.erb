@@ -34,7 +34,7 @@
             <%= order.customer.first_name %>
         </td>
         <td><%= order.order_items.where(order_id: order.id).sum(:count) %></td>
-        <td><%= order.order_status_i18n %></td>
+        <td><%#= order.order_status_i18n %></td>
       </tr>
       <% end %>
     </tbody>
