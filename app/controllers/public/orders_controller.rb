@@ -34,9 +34,9 @@ class Public::OrdersController < ApplicationController
     @cart_items.each do |cart_item|
       @order_items=OrderItem.new
       @order_items.order_id=@order.id
-      @order_items.product_id=cart_item.product.id
-      @order_items.tax_price=cart_item.product.with_tax_price
-      @order_items.quantity=cart_item.quantity
+      @order_items.item_id=cart_item.item.id
+      @order_items.price=cart_item.item.with_tax_price
+      @order_items.count=cart_item.count
       @order_items.making_status=0
       @order_items.save
     end
