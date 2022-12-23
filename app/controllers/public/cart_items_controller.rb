@@ -24,15 +24,15 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    # item = CartItem.find_by(item_id: params[:cart_item][:item_id], customer_id: current_customer.id)
-    # if item
-    #   item.update(quantity: item.quantity.to_i + params[:cart_item][:quantity].to_i)
-    # else
-    #   cart_item = CartItem.new(cart_item_params)
-    #   cart_item.customer_id = current_customer.id
-    #   cart_item.save
-    # end
-    #   redirect_to cart_items_path
+    item = CartItem.find_by(item_id: params[:cart_item][:item_id], customer_id: current_customer.id)
+    if item
+      item.update(count: item.count.to_i + params[:cart_item][:count].to_i)
+    else
+      cart_item = CartItem.new(cart_item_params)
+      cart_item.customer_id = current_customer.id
+      cart_item.save
+    end
+      redirect_to cart_items_path
     
     # if current_customer.cart_items.find_by(item_id: cart_item_params[:item_id])
     #   #数量が選択されていない場合
@@ -66,9 +66,9 @@ class Public::CartItemsController < ApplicationController
     # end
     
     # @cart_item = current_customer.cart_items.new(cart_item_params)
-    # @cart_item = CartItem.new
+    # # @cart_item = CartItem.new
     # @total_price = 0
-    #選択されていない場合 
+    # #選択されていない場合 
     # if params[:cart_item][:count].empty?
     #   flash[:notice] = "個数を選択してください"
     #   redirect_to request.referer
