@@ -32,12 +32,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @order_details.each do |order_detail| %>
+          <% @order_items.each do |order_item| %>
             <tr>
-              <td><%= order_detail.product.name %></td>
-              <td><%= order_detail.product.with_tax_price %></td>
-              <td><%= order_detail.quantity %></td>
-              <td><%= order_detail.sub_total %></td>
+              <td><%= order_item.product.name %></td>
+              <td><%= order_item.product.with_tax_price %></td>
+              <td><%= order_item.quantity %></td>
+              <td><%= order_item.sub_total %></td>
             </tr>
           <% end %>
         </tbody>
@@ -56,7 +56,7 @@
         </tr>
         <tr>
           <th  class="table-active">ご請求額</th>
-          <td><%= @order.total_payment %></td>
+          <td><%= @order.pay_total %></td>
         </tr>
       </table>
     </div>
