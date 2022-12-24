@@ -5,10 +5,10 @@
       <%= render "genres", genres: @genres %>
     </div>
 
-    <div class="col-3">
+    <div class="col-4">
       <%= image_tag @item.item_image, size: "300x240" %>
     </div>
-    <div class="col-6">
+    <div class="col-5">
       <div style="font-size: 35px;">
         <%= @item.name %>
       </div>
@@ -35,17 +35,14 @@
 
   <div class="row mt-3 mb-5">
     <div class="col-2 offset-1"></div>
-    <div class="col-3" style="font-size: 22px; color: red;"><%= flash[:alert] %></div>
+    <div class="col-4" style="font-size: 22px; color: red;"><%= flash[:alert] %></div>
     <div class="col-1" style="text-align: center; padding: 2px 0 200px 40px;">
-      <%= form_with model: @cart_item, url: cart_items_path, method: :post do |f| %>
-      <%= f.hidden_field :item_id, :value => @item.id %>
-      <%= f.select :count, [["1個", 1],["2個", 2],["3個", 3],["4個", 4],["5個", 5],["6個", 6],["7個", 7],["8個", 8],["9個", 9],["10個", 10]], {include_blank: "個数選択"} %>
-    </div>
-
-
-
-    <div class="col-3", style="text-align: center; padding: 0 0 200px 0;" >
-      <%= f.submit "カートに入れる", class: "btn btn-success" %>
+      <%= form_with model: @cart_item, url: cart_items_path, local:true, method: :post do |f| %>
+        <%= f.hidden_field :item_id, :value => @item.id %>
+        <div class="d-flex">
+          <%= f.select :count, [["1個", 1],["2個", 2],["3個", 3],["4個", 4],["5個", 5],["6個", 6],["7個", 7],["8個", 8],["9個", 9],["10個", 10]], {include_blank: "個数選択"} %>
+          <%= f.submit "カートに入れる", class: "btn btn-success ml-5" %>
+        </div>
       <% end %>
     </div>
   </div>
