@@ -5,69 +5,97 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap" rel="stylesheet">
   </head>
-
   <body>
-    <header class="shadow-sm">
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+    <style>
+      body{font-family: 'Kosugi Maru', sans-serif;}
+      .navbar-toggler .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(181,23,0,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        border-color: brown;
+      }
+      .logo{
+        transform: scale(1.8,1.8);
+        transition: .5s;
+      }
+      .logo:hover{
+        transform: scale(2.4,2.4);
+        transition: .5s;
+      }
+      .scale{
+        transition: .5s;
+      }
+      .scale:hover{
+        transform: scale(1.15,1.15);
+        transition: .5s;
+      }
+    </style>
+    <header class="shadow-sm" style="background:rgb(255,226,199); position: fixed; width:100%; z-index:10;">
+      <nav class="navbar navbar-expand-lg navbar-dark py-3">
         <div class="container-fluid">
             <!--会員用のヘッダー-->
             <% if customer_signed_in? %>
             <a class="navbar" href="/">
-              <h1 class="font-italic font-weight-light text-light">Nagano Cake</h1>
+              <%= image_tag ('logo.png'), size:"60x60",class:"rounded-circle logo" %>
             </a>
-            <h5 class=" m-0 text-white">ようこそ、<%= current_customer.last_name %>さん!</h5>
+            <h5 class="m-0 pl-5" style="color:brown;">ようこそ、<%= current_customer.last_name %>さん!</h5>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
-                <li class="mr-2"><%= link_to "マイページ", my_page_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                <li class="mr-2"><%= link_to "商品一覧", items_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                <li class="mr-2"><%= link_to "カート", cart_items_path,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
-                <li class="mr-2"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
+                <li class="mr-2"><%= link_to "マイページ", my_page_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
+                <li class="mr-2"><%= link_to "商品一覧", items_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
+                <li class="mr-2"><%= link_to "カート", cart_items_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
+                <li class="mr-2"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;"  %></li>
               </ul>
             </div>
             <!--管理人のヘッダー-->
             <% elsif admin_signed_in? %>
             <a class="navbar" href="/">
-              <h1 class="font-italic font-weight-light text-light">Nagano Cake</h1>
+              <%= image_tag ('logo.png'), size:"60x60", class:"rounded-circle logo" %>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
-                <li class="mr-2"><%= link_to "商品一覧", admin_items_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                <li class="mr-2"><%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                <li class="mr-2"><%= link_to "注文履歴一覧", admin_root_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                <li class="mr-2"><%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                <li class="mr-2"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                <li class="mr-2"><%= link_to "商品一覧", admin_items_path, class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
+                <li class="mr-2"><%= link_to "会員一覧", admin_customers_path, class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
+                <li class="mr-2"><%= link_to "注文履歴一覧", admin_root_path, class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
+                <li class="mr-2"><%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
+                <li class="mr-2"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link',style: "font-size: 1.5rem; color:brown;" %></li>
               </ul>
             </div>
             <% else %>
             <a class="navbar" href="/">
-              <h1 class="font-italic font-weight-light text-light">Nagano Cake</h1>
+              <%= image_tag ('logo.png'), size:"60x60", class:"rounded-circle logo" %>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
-                <li class="mr-2"><%= link_to "About", about_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                <li class="mr-2"><%= link_to "商品一覧", items_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                <li class="mr-2"><%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
-                <li class="mr-2"><%= link_to "ログイン", new_customer_session_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                <li class="mr-2"><%= link_to "About", about_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
+                <li class="mr-2"><%= link_to "商品一覧", items_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
+                <li class="mr-2"><%= link_to "新規登録", new_customer_registration_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
+                <li class="mr-2"><%= link_to "ログイン", new_customer_session_path,class: 'nav-link scale', style: "font-size: 1.5rem; color:brown;" %></li>
               </ul>
             </div>
             <% end %>
         </div>
       </nav>
     </header>
-    <%= flash[:notice] %>
-    <%= yield %>
+    <div class="pb-5" style="background: rgba(255,240,86,.2); padding-top:120px; min-height:100vh;">
+      <%= flash[:notice] %>
+      <%= yield %>
+    </div>
+    <footer class="text-center pt-2 pb-2" style="background:rgb(255,226,199);">
+      <small>&copy; Nagano Cake All Right Reserved</small>
+    </footer>
   </body>
 </html>
