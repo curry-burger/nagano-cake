@@ -11,16 +11,62 @@
   </head>
 
   <body>
-    <br>
-    <%= link_to destroy_customer_session_path, method: :delete do %>
-      Log out
-    <% end %>
-    <%= link_to new_customer_session_path do %>
-      Log in
-    <% end %>
-    <%= link_to new_customer_registration_path do %>
-      Sign up
-    <% end %>
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
+        <div class="container-fluid">
+            <!--会員用のヘッダー-->
+            <% if customer_signed_in? %>
+            <a class="navbar" href="/">
+              <h1 class="font-italic font-weight-light text-light">Nagano Cake</h1>
+            </a>
+            <h5 class=" m-0 text-white">ようこそ、<%= current_customer.last_name %>さん!</h5>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <li class="mr-2"><%= link_to "マイページ", my_page_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                <li class="mr-2"><%= link_to "商品一覧", items_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                <li class="mr-2"><%= link_to "カート", cart_items_path,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
+                <li class="mr-2"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link text-white btn btn-outline-secondary'  %></li>
+              </ul>
+            </div>
+            <!--管理人のヘッダー-->
+            <% elsif admin_signed_in? %>
+            <a class="navbar" href="/">
+              <h1 class="font-italic font-weight-light text-light">Nagano Cake</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <li class="mr-2"><%= link_to "商品一覧", admin_items_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                <li class="mr-2"><%= link_to "会員一覧", admin_customers_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                <li class="mr-2"><%= link_to "注文履歴一覧", admin_root_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                <li class="mr-2"><%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                <li class="mr-2"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-white btn btn-outline-secondary' %></li>
+              </ul>
+            </div>
+            <% else %>
+            <a class="navbar" href="/">
+              <h1 class="font-italic font-weight-light text-light">Nagano Cake</h1>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav ml-auto">
+                <li class="mr-2"><%= link_to "About", about_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                <li class="mr-2"><%= link_to "商品一覧", items_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                <li class="mr-2"><%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
+                <li class="mr-2"><%= link_to "ログイン", new_customer_session_path,class: 'nav-link text-white btn btn-outline-secondary' %></li>
+              </ul>
+            </div>
+            <% end %>
+        </div>
+      </nav>
+    </header>
     <%= flash[:notice] %>
     <%= yield %>
   </body>

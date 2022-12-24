@@ -1,17 +1,8 @@
-<h1>Public::Items#index</h1>
 <div class="row d-flex mt-5 ">
   <div class="col-1"></div>
     <div class="col-2">
-      <!--<table class="table table-bordered table-hover">-->
-      <!--  <thead>-->
-      <!--    <tr>-->
-      <!--      <th class="text-center">ジャンル検索</th>-->
-      <!--    </tr>-->
-      <!--  </thead>-->
-      <!--  <tbody>-->
-          <%#= render "public/products/genres_search", genres: @genres %>
-      <!--  </tbody>-->
-      <!--</table>-->
+      <%= render "genres", genres: @genres %>
+
     </div>
 
     <div class="col-8">

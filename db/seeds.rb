@@ -24,7 +24,6 @@
 #   ]
 # )
 
-
 # 5.times do |n|
 #   item = Item.create!(
 #     genre_id: n + 1,
@@ -35,6 +34,37 @@
 #   )
 #   item.item_image.attach(io: File.open(Rails.root.join("app/assets/images/cake1.jpg")),
 #   filename: "cake1.jpg"
+#   )
+# end
+
+
+
 
 #   )
 #end
+
+# Admin.create!( email: "ad@ad", password: "qazpl,")
+
+
+# Admin.create!(
+#   email: "ad@ad",
+#   password: "qazpl,"
+# )
+
+# CartItem.create!(
+#     item_id: 1,
+#     customer_id: 1,
+#     count: 2,
+# )
+
+Order.create!(
+    customer_id: 1,
+    postage: 800,
+    pay_total: 1100,
+    pay_method: 0,
+    post_code: 9999999,
+    address: '秋田県男鹿市',
+    name: '男鹿半島',
+    status: 0,
+)
+

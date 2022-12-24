@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   #アソシエーション genre : item  => N : 1
   belongs_to :genre
   has_many :cart_items, dependent: :destroy # cart_item : item => N : 1
+  has_many :order_items, dependent: :destroy # order_items : item => N : 1
   # belongs_to :genre, optional: true  #一次的にバリデーションの解除後で削除
 
   #Activestrageでitemモデルにitem_imageカラムとして画像を持たせる
@@ -18,7 +19,7 @@ class Item < ApplicationRecord
   end
 
   # 消費税を求めるメソッド
-  def with_tax_ptice
+  def with_tax_price
     (price*1.1).floor
   end
 
