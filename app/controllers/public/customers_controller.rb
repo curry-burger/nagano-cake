@@ -13,7 +13,7 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
     if @customer.update(customer_params)
       flash[:customer_notice] = "会員情報を更新しました"
-      redirect_to customers_my_page_path
+      redirect_to my_page_path
     else
       render "edit"
     end

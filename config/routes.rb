@@ -5,26 +5,14 @@ Rails.application.routes.draw do
     get "about"=>"homes#about",as:"about"
     resources :items, only: [:index,:show] # 追加
     #public/customersのルーティング
-    get "customers/my_page"=>"customers#show"
-    get "customers/infomation/edit"=>"customers#edit"
-    patch "customers/infomation"=>"customers#update"
+    get "customers/my_page"=>"customers#show", as:"my_page"
+    get "customers/infomation/edit"=>"customers#edit", as:"info_edit"
+    patch "customers/infomation"=>"customers#update", as:"info"
     get "customers/confirm"=>"customers#confirm"
     patch "customers/exit"=>"customers#exit"
   end
 
 
-  # namespace :public do
-  #   get 'order_items/update'
-  # end
-  # namespace :public do
-  #   get 'homes/top'
-  #   get 'homes/about'
-  # end
-
-  # 商品、ジャンルに関するルーティング
-  # namespace :public do
-  #   resources :items, only: [:index,:show]
-  # end
   namespace :admin do
     resources :items, only: [:index,:new,:create,:show,:edit,:update]
   end
