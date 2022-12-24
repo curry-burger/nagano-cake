@@ -3,7 +3,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order=Order.new
     @customer=current_customer
-    @shipping_addresses=@customer.addresses
+    @addresses=@customer.addresses
   end
 
   def confirm
@@ -13,7 +13,7 @@ class Public::OrdersController < ApplicationController
       @order.name=current_customer.first_name+current_customer.last_name
       @order.address=current_customer.address
     elsif params[:order][:select_address]=='1'
-      @address=ShippingAddress.find(params[:order][:shipping_address_id])
+      @address=Address.find(params[:order][:address_id])
       @order.post_code=@address.post_code
       @order.name=@address.name
       @order.address=@address.address
@@ -32,13 +32,13 @@ class Public::OrdersController < ApplicationController
     @cart_items=current_customer.cart_items.all
 
     @cart_items.each do |cart_item|
-      @order_details=OrderDetail.new
-      @order_details.order_id=@order.id
-      @order_details.product_id=cart_item.product.id
-      @order_details.tax_price=cart_item.product.with_tax_price
-      @order_details.quantity=cart_item.quantity
-      @order_details.making_status=0
-      @order_details.save
+      @order_items=OrderItem.new
+      @order_items.order_id=@order.id
+      @order_items.item_id=cart_item.item.id
+      @order_items.price=cart_item.item.with_tax_price
+      @order_items.count=cart_item.count
+      @order_items.making_status=0
+      @order_items.save
     end
 
     CartItem.destroy_all
@@ -56,8 +56,8 @@ class Public::OrdersController < ApplicationController
 
   def show
     @order=Order.find(params[:id])
-    @total_price = OrderDetail.total_price(@order)
-    @order_details=OrderDetail.where(order_id:params[:id])
+    @total_price = OrderItem.total_price(@order)
+    @order_items=OrderItem.where(order_id:params[:id])
   end
 
   private
