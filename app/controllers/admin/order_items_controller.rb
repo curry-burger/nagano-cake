@@ -1,7 +1,7 @@
 class Admin::OrderItemsController < ApplicationController
 
   def update
-    @order_item = OrderDetail.find(params[:id])
+    @order_item = OrderItem.find(params[:id])
     @order_item.update(order_item_params)
     if @order_item.making_status == "production"
       @order_item.order.update(order_status: 2)
