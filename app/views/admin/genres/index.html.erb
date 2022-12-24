@@ -1,15 +1,24 @@
+<style>
+  li{
+    list-style:none;
+    }
+</style>
 <div class="container">
   <div class="mt-4">
     <div class="col-md-8">
 
-      <h2>ジャンル一覧・追加</h2>
+      <h4><span class="bg-light">ジャンル一覧・追加<span></h4>
       <div class="mt-4">
         <!--ジャンル名登録フォーム-->
-        <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
-          <%= f.label :name, 'ジャンル名' %>
-          <%= f.text_field :name %>
-          <%= f.submit '新規投稿', class:"btn btn-sm btn-success" %>
-        <% end %>
+        
+          <%= form_with model: @genre, url: admin_genres_path, local:true do |f| %>
+          <ul class="d-flex">
+            <li class="mr-5"><%= f.label :name, 'ジャンル名' %></li>
+            <li class="mr-5"><%= f.text_field :name %></li>
+            <li><%= f.submit '新規登録', class:"btn btn-sm btn-success pt-1 pb-1 px-4" %></li>
+          </ul>  
+          <% end %>
+      
       </div>
 
       <!--既に登録されているジャンルのリスト-->
@@ -25,7 +34,7 @@
             <% @genres.each do |genre| %>
             <tr>
               <td><p><%= genre.name %></p></td>
-              <td><%= link_to '編集', edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
+              <td><%= link_to '編集する', edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
             </tr>
             <% end %>
           </tbody>
