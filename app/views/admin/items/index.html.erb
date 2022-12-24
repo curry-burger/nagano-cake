@@ -1,40 +1,10 @@
-<h1>Admin::Items#index</h1>
-<!--<h2>商品一覧</h2>-->
-<!--<table class="table">-->
-<!--  <thead>-->
-<!--    <tr>-->
-<!--      <th scope="col">id</th>-->
-<!--      <th scope="col">商品名</th>-->
-<!--      <th scope="col">税抜価格</th>-->
-<!--      <th scope="col">ジャンル</th>-->
-<!--      <th scope="col">ステータス</th>-->
-<!--    </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-<!--    <%#= @items.each do |item| %>-->
-<!--    <tr>-->
-<!--      <th scope="row"><%#= item.id %></th>-->
-<!--      <td><%#= item.name %></td>-->
-<!--      <td><%#= item.price %></td>-->
-      <!--⬇︎要編集-->
-<!--      <td>-->
-<!--        <%#= image_tag item.get_image %>-->
-<!--        ステータス名-->
-<!--      </td>-->
-<!--      <td>ジャンル名</td>  -->
-<!--    </tr>-->
-<!--    <%# end %>-->
-<!--  </tbody>-->
-<!--</table>-->
-
-
 <div class="container">
   <div class="mt-4">
     <div class="col-md-auto">
 
       <div class="row mt-4">
         <div class="col-3">
-          <h2>商品一覧</h2>
+          <h4><span class="bg-light">商品一覧</span></h4>
         </div>
         <div class="col-8 text-right">
           <%= link_to "＋", new_admin_item_path, class:"h1 text-decoration-none text-dark", 'data-turbolinks': false  %>
