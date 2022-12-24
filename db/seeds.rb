@@ -51,9 +51,20 @@
 #   password: "qazpl,"
 # )
 
-CartItem.create!(
-    item_id: 1,
+# CartItem.create!(
+#     item_id: 1,
+#     customer_id: 1,
+#     count: 2,
+# )
+
+Order.create!(
     customer_id: 1,
-    count: 2,
+    postage: 800,
+    pay_total: 1100,
+    pay_method: 0,
+    post_code: 9999999,
+    address: '秋田県男鹿市',
+    name: '男鹿半島',
+    status: 0,
 )
 

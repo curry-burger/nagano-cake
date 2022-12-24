@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # namespace :admin do
+  #   get 'orders/show'
+  # end
   scope module: :public do
     root to:"homes#top"
     get "about"=>"homes#about",as:"about"
@@ -11,6 +14,10 @@ Rails.application.routes.draw do
     patch "customers/exit"=>"customers#exit"
     resources :cart_items, only: [:index,:update,:create,:destroy]
     delete 'cart_item/destroy_all' => 'cart_items#destroy_all' , as: 'destroy_all'
+  end
+
+  namespace :admin do
+    resources :orders, only: [:show,:update]
   end
 
   namespace :admin do
