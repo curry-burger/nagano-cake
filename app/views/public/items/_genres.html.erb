@@ -1,0 +1,15 @@
+<table class="table table-bordered">
+  <thead>
+    <tr align="center">
+      <th>ジャンル検索</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--各ジャンルeach文で入れる-->
+    <% @genres.each do |genre| %>
+      <tr>
+        <td><%= link_to genre.name, items_path(genre_search: "true", genre_id: genre.id), class: "text-dark" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
