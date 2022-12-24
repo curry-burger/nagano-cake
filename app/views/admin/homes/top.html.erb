@@ -33,13 +33,13 @@
             <%= order.customer.last_name %>
             <%= order.customer.first_name %>
         </td>
-        <td><%= order.order_details.where(order_id: order.id).sum(:quantity) %></td>
-        <td><%= order.order_status_i18n %></td>
+        <td><%= order.order_items.where(order_id: order.id).sum(:count) %></td>
+        <td><%#= order.order_status_i18n %></td>
       </tr>
       <% end %>
     </tbody>
    </table>
-    <div class="col-md-5 mx-auto"><%= paginate @orders, theme: 'bootstrap-5' %></div>
+    <div class="col-md-5 mx-auto"><%#= paginate @orders, theme: 'bootstrap-5' %></div>
   </div>
  </div>
 </div>
