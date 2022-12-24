@@ -1,8 +1,7 @@
-<h1>Admin::Items#show</h1>
 <div class="container">
   <!--<div class="row">-->
     <div class="mt-4">
-      <h2>商品詳細</h2>
+      <h4><span class="bg-light">商品詳細</span></h4>
       <!--商品詳細データ-->
       <div class="row mt-4">
         <!--商品画像-->
@@ -39,7 +38,7 @@
             </tr>
             <tr>
               <td></td>
-              <td><%= link_to "編集する", edit_admin_item_path(@item.id) ,class: "btn btn-success", 'data-turbolinks': false %></td>
+              <td><%= link_to "編集する", edit_admin_item_path(@item.id) ,class: "btn btn-success pt-2 pb-2 px-4", 'data-turbolinks': false %></td>
             </tr>
           </table>
         </div>
