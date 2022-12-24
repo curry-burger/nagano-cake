@@ -24,7 +24,6 @@
 #   ]
 # )
 
-
 # 5.times do |n|
 #   item = Item.create!(
 #     genre_id: n + 1,
@@ -37,6 +36,7 @@
 #   filename: "cake1.jpg"
 #   )
 # end
+
 
 # Admin.create!(
 #   email: "ad@ad",
