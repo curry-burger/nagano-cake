@@ -38,6 +38,14 @@
 # end
 
 
+
+
+#   )
+#end
+
+# Admin.create!( email: "ad@ad", password: "qazpl,")
+
+
 # Admin.create!(
 #   email: "ad@ad",
 #   password: "qazpl,"
@@ -58,4 +66,5 @@ Order.create!(
     address: '秋田県男鹿市',
     name: '男鹿半島',
     status: 0,
-    )
+)
+
