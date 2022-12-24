@@ -11,7 +11,7 @@
       </p>
     </div>
     <div class="col-md-12 text-center">
-      <%= link_to "退会しない", customers_my_page_path(@customer), class:"col-md-2 btn btn-primary mr-4" %>
+      <%= link_to "退会しない", my_page_path(@customer), class:"col-md-2 btn btn-primary mr-4" %>
       <%= link_to "退会する", customers_exit_path, class:"col-md-2 btn btn-danger", method: :patch, "data-confirm" => "本当に退会しますか？"  %>
     </div>
   </div>
