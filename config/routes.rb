@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     root to:"homes#top"
     get "about"=>"homes#about",as:"about"
     resources :items, only: [:index,:show]
+    get "customers/my_page"=>"customers#show", as:"my_page"
+    get "customers/infomation/edit"=>"customers#edit", as:"info_edit"
+    patch "customers/infomation"=>"customers#update", as:"info"
+    get "customers/confirm"=>"customers#confirm"
+    patch "customers/exit"=>"customers#exit"
     resources :cart_items, only: [:index,:update,:create,:destroy]
     delete 'cart_item/destroy_all' => 'cart_items#destroy_all' , as: 'destroy_all'
   end
