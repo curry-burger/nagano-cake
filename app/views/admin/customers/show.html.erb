@@ -10,11 +10,11 @@
           </tr>
           <tr>
             <th style="width: 150px">氏名</th>
-            <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+            <td><%= @customer.full_name %></td>
           </tr>
           <tr>
             <th style="width: 150px">フリガナ</th>
-            <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
+            <td><%= @customer.full_name_kana %></td>
           </tr>
           <tr>
             <th style="width: 150px">郵便番号</th>
@@ -38,7 +38,7 @@
                <% if @customer.id_deleted %>
                 <p class="text-muted font-weight-bold align-middle">退会</p>
                <% else %>
-                <p class="text-success font-weight-bold">有効</p>
+                <p class="text-success font-weight-bold align-middle">有効</p>
                <% end %>
              </td>
           </tr>
