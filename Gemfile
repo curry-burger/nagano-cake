@@ -61,3 +61,6 @@ gem 'devise'
 
 # kaminari(ページネーション)の導入
 gem 'kaminari','~> 1.2.1'
+
+# enumの導入（各ステータス）
+gem 'enum_help'
