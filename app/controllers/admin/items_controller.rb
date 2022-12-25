@@ -1,6 +1,7 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.page(params[:page])  #kaminari(ページネーション)導入のため
+    @item = Item.all.order(id: "DESC")
+    @items = @item.page(params[:page]) #kaminari(ページネーション)導入のため
     # @items = Item.all
   end
 
