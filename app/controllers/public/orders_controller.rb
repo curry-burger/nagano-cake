@@ -8,7 +8,13 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @order=Order.new(order_params)
+     @order=Order.new(order_params)
+  if (params[:order][:post_code].blank? || params[:order][:address].blank? || params[:order][:name].blank?) && params[:order][:select_address]=='2'
+    @customer=current_customer
+    @addresses=@customer.addresses
+    render :new
+  end
+
     if params[:order][:select_address]=='0'
       @order.post_code=current_customer.post_code
       @order.name=current_customer.last_name+current_customer.first_name
@@ -24,12 +30,12 @@ class Public::OrdersController < ApplicationController
     @cart_items=current_customer.cart_items.all
     @total_price = CartItem.total_price(current_customer)
     @order_new=Order.new
-    render :confirm
+    # render :confirm
   end
 
   def create
     @order=Order.new(order_params)
-    @order.save
+    @order.save!
     @cart_items=current_customer.cart_items.all
 
     @cart_items.each do |cart_item|
@@ -39,7 +45,7 @@ class Public::OrdersController < ApplicationController
       @order_items.price=cart_item.item.with_tax_price
       @order_items.count=cart_item.count
       @order_items.status=0
-      @order_items.save!
+      @order_items.save
     end
 
     CartItem.destroy_all
