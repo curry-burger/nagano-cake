@@ -24,11 +24,19 @@ class Admin::CustomersController < ApplicationController
       # render :edit
     end
   end
+  def exit
+    @customer = Customer.find(params[:id])
+    # id_deletedカラムをtrueに変更することにより削除フラグを立てる
+    @customer.update(id_deleted: true)
+    reset_session
+    flash[:notice] = "退会処理を実行いたしました"
+    redirect_to root_path
+  end
 
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :post_code, :address, :phone_number, :email, :id_deleted)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :post_code, :address, :phone_number, :email, :id_deleted, :first_name_kana)
   end
 
 

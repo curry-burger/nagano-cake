@@ -35,6 +35,7 @@ class Public::SessionsController < Devise::SessionsController
       flash[:alert] = "必要項目を入力してください。"
     end
   end
+  
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_in_params

@@ -46,17 +46,18 @@
           <tr>
             <th>会員ステータス</th>
             <td>
-              <%= f.radio_button :is_deleted, false %>
-              <%= f.label :is_deleted, "有効", value: false %>
-              <%= f.radio_button :is_deleted, true %>
-              <%= f.label :is_deleted, "退会", value: true %>
+              <%= f.radio_button :id_deleted, false %>
+              <%= f.label :id_deleted, "有効", value: false %>
+              <%= f.radio_button :id_deleted, true %>
+              <%= f.label :id_deleted, "退会", value: true %>
             </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= f.submit "変更を保存", class:'btn btn-success  inline-block px-4' %></td> 
           </tr>
         </tbody>
       </table>
-      <div class="form-group col-md-2 offset-5">
-        <%= f.submit "変更を保存", class:'btn btn-success  inline-block px-4' %>
-      </div>
     <% end %>
     </div>
   </div>
