@@ -1,10 +1,10 @@
 class OrderItem < ApplicationRecord
   belongs_to :order
-  belongs_to :items
+  belongs_to :item
   enum making_status: {can_not_start: 0, waiting_for_production: 1, production: 2, completed: 3}
 
   def sub_total
-    count*product.with_tax_price
+    count*item.with_tax_price
   end
 
   def self.total_price(order)
