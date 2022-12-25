@@ -46,7 +46,7 @@
       <table class="col-md-9 table table-borderless">
         <tr>
           <th>支払い方法</th>
-          <td><%#= @order.method_of_payment_i18n %></td>
+          <td><%= @order.pay_method %></td>
         </tr>
         <tr>
           <th>お届け先</th>
@@ -63,7 +63,7 @@
         <%= f.hidden_field:address,value:@order.address %>
         <%= f.hidden_field:postage,value:800 %>
         <%= f.hidden_field:pay_total,value:@total_price + 800 %>
-        <%= f.hidden_field:method_of_payment,value:@order.method_of_payment %>
+        <%= f.hidden_field:pay_method,value:@order.pay_method %>
        <%= f.submit "注文を確定する",class:"btn btn-lg btn-success" %>
       <% end %>
     </div>

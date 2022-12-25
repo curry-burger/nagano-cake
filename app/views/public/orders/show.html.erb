@@ -14,11 +14,11 @@
         </tr>
         <tr>
           <th class="table-active">支払い方法</th>
-          <td><%= @order.method_of_payment_i18n %></td>
+          <td><%= @order.pay_method %></td>
         </tr>
         <tr>
           <th class="table-active">ステータス</th>
-          <td><%= @order.order_status_i18n %></td>
+          <td><%= @order.order_status %></td>
         </tr>
       </table>
       <p>注文内容</p>
@@ -34,9 +34,9 @@
         <tbody>
           <% @order_items.each do |order_item| %>
             <tr>
-              <td><%= order_item.product.name %></td>
-              <td><%= order_item.product.with_tax_price %></td>
-              <td><%= order_item.quantity %></td>
+              <td><%= order_item.item.name %></td>
+              <td><%= order_item.item.with_tax_price %></td>
+              <td><%= order_item.count %></td>
               <td><%= order_item.sub_total %></td>
             </tr>
           <% end %>
