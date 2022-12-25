@@ -38,7 +38,21 @@ Genre.create(
 end
 
 
+
+
+#   )
+#end
+
 Admin.create!( email: "ad@ad", password: "qazpl,")
+
+
+# Admin.create!(
+#   email: "ad@ad",
+#   password: "qazpl,"
+# )
+
+
+
 
 # CartItem.create!(
 #     item_id: 1,
