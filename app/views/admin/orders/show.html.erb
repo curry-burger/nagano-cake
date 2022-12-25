@@ -56,10 +56,10 @@
               <td><%= order_item.item.name %></td>
               <td><%= order_item.price.to_s(:delimited) %></td>
               <td><%= order_item.count %></td>
-              <td><%= order_item.subtotal.to_s(:delimited) %></td>
+              <td><%= order_item.sub_total.to_s(:delimited) %></td>
               <td>
                 <%= form_with model:order_item, url:admin_order_item_path(order_item), method: :patch do |f| %>
-                  <%= f.select :status, OrderItem.statuses.keys.map {|k| [I18n.t("enums.order_item.tatus.#{k}"), k]} %>
+                  <%= f.select :status, OrderItem.statuses.keys.map {|k| [I18n.t("enums.order_item.status.#{k}"), k]} %>
                   <%= f.submit "更新", class: "btn btn-success ml-3" %>
                 <% end %>
               </td>
