@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-5 d-flex justify-content-between">
-    <div class="bg-light my-3 ml-4">
-      <h5>ショッピングカート</h5>
+    <div class="my-3 ml-4">
+      <h4>ショッピングカート</h4>
     </div>
     <div>
       <% unless @cart_items.empty? %>
@@ -12,7 +12,7 @@
 
   <div class="row">
     <table class="table table-bordered border-dark">
-      <thead class="table-secondary">
+      <thead class="table-dark">
         <tr>
           <th class="col-md-4">商品名</th>
           <th class="col-md-2">単価(税込)</th>
@@ -61,7 +61,7 @@
     <div class="col-md-4 mt-3 px-0">
       <table class="table table-bordered">
         <tr>
-          <th class="col-5 table-secondary">合計金額</th>
+          <th class="col-5 table-dark">合計金額</th>
           <td class="col-5">
             <%= number_with_delimiter @total_price %>
           </td>
