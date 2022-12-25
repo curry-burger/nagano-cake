@@ -3,7 +3,8 @@
     <div class="col">
       <h4>配送先編集</h4>
       <%= form_with model:@address,method: :patch do |f| %>
-        <table class="table table-borderless">
+      <table class="table table-borderless">
+        <div>
           <tr>
             <th>郵便番号(ハイフン無し)</th>
             <th><%= f.text_field:post_code %></th>
@@ -17,7 +18,8 @@
             <th><%= f.text_field:name %></th>
             <th><%= f.submit "変更内容を保存",class:"btn btn-success" %></th>
           </tr>
-        </table>
+        </div>
+      </table>
       <% end %>
     </div>
   </div>
