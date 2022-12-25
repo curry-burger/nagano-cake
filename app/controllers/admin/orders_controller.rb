@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-  # before_action :authenticate_admin!
+  before_action :authenticate_admin!
 
   def show
     @order = Order.find(params[:id])
@@ -9,9 +9,8 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
-      # 注文ステータスが入金確認になったら製作ステータス全て製作待ちに
-      if @order.status == "入金確認"
-        @order.order_details.update_all(making_status: :production_pending)
+      if @order.status == "confirmation"
+        @order.order_items.update_all(status:1)
       end
       redirect_to request.referer
     else
