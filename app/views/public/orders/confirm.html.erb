@@ -19,9 +19,9 @@
               <%= image_tag cart_item.item.get_image,size: "70x60" %>
               <%= cart_item.item.name %>
             </td>
-            <td><%= cart_item.item.with_tax_price %></td>
+            <td><%= cart_item.item.with_tax_price.to_s(:delimited) %></td>
             <td><%= cart_item.count %></td>
-            <td><%= @sum += cart_item.subtotal %></td>
+            <td><%= (@sum += cart_item.subtotal).to_s(:delimited) %></td>
           </tr>
           <% end %>
         </tbody>
@@ -30,16 +30,16 @@
     <div class="col-3  offset-1">
       <table class="table table-bordered table-sm">
         <tr>
-          <th class="table-active">商品合計</th>
-          <td><%= @total_price %></td>
-        </tr>
-        <tr>
           <th class="table-active">送料</th>
           <td>800</td>
         </tr>
         <tr>
+          <th class="table-active">商品合計</th>
+          <td><%= @total_price.to_s(:delimited) %></td>
+        </tr>
+        <tr>
           <th class="table-active">請求金額</th>
-          <td><%= @total_price + 800 %></td>
+          <td><%= (@total_price + 800).to_s(:delimited) %></td>
         </tr>
       </table>
       </div>
