@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# 管理者のアカウント
+Admin.create!( email: "ad@ad", password: "qazpl,")
+
 # ジャンルの初期値
 Genre.create(
   [
@@ -36,37 +39,3 @@ Genre.create(
   filename: "cake1.jpg"
   )
 end
-
-
-
-
-#   )
-#end
-
-Admin.create!( email: "ad@ad", password: "qazpl,")
-
-
-# Admin.create!(
-#   email: "ad@ad",
-#   password: "qazpl,"
-# )
-
-
-
-
-# CartItem.create!(
-#     item_id: 1,
-#     customer_id: 1,
-#     count: 2,
-# )
-
-# Order.create!(
-#     customer_id: 1,
-#     postage: 800,
-#     pay_total: 1100,
-#     pay_method: 0,
-#     post_code: 9999999,
-#     address: '秋田県男鹿市',
-#     name: '男鹿半島',
-#     status: 0,
-# )
