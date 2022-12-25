@@ -46,7 +46,7 @@
       <table class="col-md-9 table table-borderless">
         <tr>
           <th>支払い方法</th>
-          <td><%#= @order.method_of_payment_i18n %></td>
+          <td><%= @order.pay_method %></td>
         </tr>
         <tr>
           <th>お届け先</th>
@@ -57,7 +57,7 @@
     <div class="col-1 mt-5 mb-5 mx-auto">
       <%= form_with model:@order_new,method: :post do |f| %>
         <%= f.hidden_field:customer_id,value:current_customer.id %>
-        <%= f.hidden_field:order_status,value:Order.order_statuses.key(0) %>
+        <%= f.hidden_field:status,value:Order.statuses.key(0) %>
         <%= f.hidden_field:name,value:@order.name %>
         <%= f.hidden_field:post_code,value:@order.post_code %>
         <%= f.hidden_field:address,value:@order.address %>

@@ -37,8 +37,8 @@ class Public::OrdersController < ApplicationController
       @order_items.item_id=cart_item.item.id
       @order_items.price=cart_item.item.with_tax_price
       @order_items.count=cart_item.count
-      @order_items.making_status=0
-      @order_items.save
+      @order_items.status=0
+      @order_items.save!
     end
 
     CartItem.destroy_all
