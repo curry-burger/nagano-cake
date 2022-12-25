@@ -3,10 +3,10 @@ class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy
 
   enum pay_method: {credit_card: 0, transfer: 1}
-  enum order_status: {waiting: 0, confirmation: 1, production: 2, preparing: 3 , shipped: 4}
+  enum status: {waiting: 0, confirmation: 1, production: 2, preparing: 3 , shipped: 4}
 
   def address_display
-    '〒' + post_code + ' ' + address + ' ' + name
+    '〒' + post_code + ' ' + address
   end
 
 end
