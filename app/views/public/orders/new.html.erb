@@ -7,14 +7,23 @@
         <h4>支払い方法</h3>
         <div class="col-md-12 table table-hover">
           <p>
-            <%#= f.radio_button :payment_method, "credit_card" %>
-            <%#= f.label :payment_method_credit_card, "クレジットカード" %>
-            <%= f.radio_button :pay_method, "credit_card" %>
+<           <%= f.radio_button :pay_method, "credit_card" %>
             <%= f.label :pay_method_credit_card, "クレジットカード" %>
           </p>
           <p>
-            <%#= f.radio_button :payment_method, "transfer" %>
-            <%#= f.label :payment_method_transfer, "銀行振込" %>
+<div class="container">
+  <h2 class="my-3 px-3 col-md-4 text-center"> 注文情報入力</h2>
+  <div class="row">
+    <div class="col-lg-12">
+      <%= form_with model:@order, url:confirm_path , method: :post do |f| %>
+      <div>
+        <h4>支払い方法</h3>
+        <div class="col-md-12 table table-hover">
+          <p>
+<           <%= f.radio_button :pay_method, "credit_card" %>
+            <%= f.label :pay_method_credit_card, "クレジットカード" %>
+          </p>
+          <p>
             <%= f.radio_button :pay_method, "transfer" %>
             <%= f.label :pay_method_transfer, "銀行振込" %>
           </p>
