@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col">
       <h4 class="px-3 my-3 text-center col-md-3">配送先登録/一覧</h4>
-      <table class="table table-borderless">
-        <%= form_with model:@address,method: :post do |f| %>
+      <%= form_with model:@address,method: :post do |f| %>
+        <table class="table table-borderless">
           <tr>
             <th>郵便番号(ハイフン無し)</th>
             <th><%= f.text_field:post_code, placeholder: "0000000" %></th>
@@ -18,8 +18,8 @@
             <th><%= f.submit "新規登録",class:"btn btn-success" %></th>
           </tr>
           <th></th>
-        <% end %>
-      </table>
+        </table>
+      <% end %>
       <% if @addresses.exists? %>
         <table class="table table-bordered">
           <thead class="thead-dark">
