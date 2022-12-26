@@ -31,8 +31,10 @@ class Public::SessionsController < Devise::SessionsController
       # 【処理内容3】一致しているが退会済みの場合：サインアップにリダイレクト
       flash[:notice] = "退会済みです。再度ご登録をしてご利用ください。"
       redirect_to new_customer_registration_path
+    elsif (@customer.valid_password?(params[:customer][:password]) == false) && (@customer.id_deleted == true)
+      flash[:notice] = "パスワードが違います。"
     else
-      flash[:alert] = "必要項目を入力してください。"
+      flash[:notice] = "必要項目を入力してください。"
     end
   end
   

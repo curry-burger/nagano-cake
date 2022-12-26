@@ -1,7 +1,7 @@
 class Admin::CustomersController < ApplicationController
     before_action :authenticate_admin!
   def index
-    @customer = Customer.all.order(id: "DESC")
+    @customer = Customer.all
     @customers = @customer.page(params[:page])
   end
 
