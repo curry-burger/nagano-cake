@@ -22,5 +22,11 @@ class Item < ApplicationRecord
   def with_tax_price
     (price*1.1).floor
   end
+  
+  #商品登録のバリデーション
+  validates :item_image, presence: true
+  validates :name, presence: true
+  validates :description, presence: true
+  validates :price, presence: true
 
 end
