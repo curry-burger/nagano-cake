@@ -1,6 +1,6 @@
 class Public::ItemsController < ApplicationController
   def index
-    @items = Item.all.page(params[:page]).per(8)
+    @items = Item.where(status:true).page(params[:page]).per(8)
     @genres = Genre.all
   end
 
@@ -9,5 +9,5 @@ class Public::ItemsController < ApplicationController
     @cart_item = CartItem.new
     @genres = Genre.all
   end
-   
+
 end
