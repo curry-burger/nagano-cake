@@ -1,4 +1,17 @@
 <div class="container">
+  <% if @genre.errors.any? %>
+    <tr>
+      <td></td>
+      <td>
+        <%= @genre.errors.count %>件のエラーが発生しました
+        <ul class="list-group list-unstyled">
+          <% @genre.errors.full_messages.each do |message| %>
+            <li class="text-danger"><%= message %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
   <div class="mt-4">
     <div class="col-md-8">
 
