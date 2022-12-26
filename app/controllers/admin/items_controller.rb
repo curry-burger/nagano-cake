@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
   def index
     @item = Item.all.order(id: "DESC")
     @items = @item.page(params[:page]) #kaminari(ページネーション)導入のため
