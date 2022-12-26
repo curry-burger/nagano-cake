@@ -1,0 +1,60 @@
+<div class="container">
+  <!--バリデーションエラーメッセージ-->
+  <% if @item.errors.any? %>
+    <tr>
+      <td></td>
+      <td>
+        <%= @item.errors.count %>件のエラーが発生しました
+        <ul class="list-group list-unstyled">
+          <% @item.errors.full_messages.each do |message| %>
+            <li class="text-danger"><%= message %></li>
+          <% end %>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
+  <div class="row mt-4">
+
+    <h4><span class="bg-light">商品編集</span></h4>
+    <div class="col-md-8 mt-4">
+      <table class="table table-borderless">
+        <%= form_with model: @item, url: admin_item_path(@item.id), method: :patch, local:true do |f| %>
+          <tr>
+            <td>商品画像</td>
+            <td><%= f.file_field :item_image, accept: "image/*" %></td>
+          </tr>
+          <tr>
+            <td>商品名</td>
+            <td><%= f.text_field :name, size: "30" %></td>
+          </tr>
+          <tr>
+            <td>商品説明</td>
+            <td><%= f.text_area :description, size: "32x5" %></td>
+          </tr>
+          <tr>
+            <td>ジャンル</td>
+            <td><%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択してください" %></td>
+          </tr>
+          <tr>
+            <td>税抜き価格</td>
+            <td><%= f.text_field :price %>円</td>
+          </tr>
+          <tr>
+            <td>販売ステータス</td>
+            <td>
+              <%= f.radio_button :status, 'true' %>販売中
+              <%= f.radio_button :status, 'false' %>販売停止中
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= f.submit '変更を保存', class:"btn btn-success pt-2 pb-2 px-4" %></td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+
+       <%#= render 'form', item: @item %>
+    </div>
+  </div>
+</div>

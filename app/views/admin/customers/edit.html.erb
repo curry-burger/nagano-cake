@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8 my-3">
+      <% if @customer.errors.any? %>
+        <%= @customer.errors.count %>件のエラーが発生しました。
+        <ul>
+          <% @customer.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+   <h3 class="mt-2"><%= @customer.last_name %> <%= @customer.first_name %>さんの会員情報編集</h3>
+    <%= form_with model: @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
+      <table class="table table-borderless offset-2">
+        <tbody>
+          <tr>
+            <th>会員id</th>
+            <td><%= @customer.id %></td>
+          </tr>
+          <tr>
+            <th>氏名</th>
+            <td><%= f.text_field :last_name, class:'form-control' %></td>
+            <td><%= f.text_field :first_name, class:'form-control' %></td>
+          </tr>
+          <tr>
+            <th>フリガナ</th>
+            <td><%= f.text_field :last_name_kana, class:'form-control' %></td>
+            <td><%= f.text_field :first_name_kana, class:'form-control' %></td>
+          </tr>
+          <tr>
+            <th>郵便番号</th>
+            <td><%= f.text_field :post_code, class:'form-control' %></td>
+          </tr>
+          <tr>
+            <th>住所</th>
+            <td><%= f.text_field :address, class:'form-control' %></td>
+          </tr>
+          <tr>
+            <th>電話番号</th>
+            <td><%= f.text_field :phone_number, class:'form-control' %></td>
+          </tr>
+          <tr>
+            <th>メールアドレス</th>
+            <td><%= f.text_field :email, class:'form-control' %></td>
+          </tr>
+          <tr>
+            <th>会員ステータス</th>
+            <td>
+              <%= f.radio_button :id_deleted, false %>
+              <%= f.label :id_deleted, "有効", value: false %>
+              <%= f.radio_button :id_deleted, true %>
+              <%= f.label :id_deleted, "退会", value: true %>
+            </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td><%= f.submit "変更を保存", class:'btn btn-success  inline-block px-4' %></td> 
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+    </div>
+  </div>
+</div>

@@ -11,6 +11,12 @@ module NaganoCake
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
 
+    # 日本語対応
+    config.i18n.default_locale = :ja
+
+    # 日本時間に設定
+    config.time_zone = 'Tokyo'
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
