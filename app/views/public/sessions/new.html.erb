@@ -1,18 +1,18 @@
 <div class="container-lg mx-auto mt-5" style="width: 600px;">
  <h2><span class="bg-light">ログイン<span></h2>
-  <% flash[:alert] %>
+ <% flash[:alert] %>
 
  <h4 class="mt-4"><span class="bg-light">会員の方はこちらからログイン</span></h4>
  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
    <div class="field d-flex justify-content-between mt-4" style="width: 400px;">
      <%= f.label :"メールアドレス" %>
      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div> 
+    </div>
    <div class="field d-flex justify-content-between mt-4" style="width: 400px;">
     <%= f.label :"パスワード" %>
     <%= f.password_field :password, autofocus: true, autocomplete: "current-password" %>
    </div>
-  
+
    <% if devise_mapping.rememberable? %>
    <div class="field mt-4">
     <%= f.check_box :remember_me %>
@@ -22,9 +22,9 @@
    <div class="actions d-flex justify-content-center mt-4">
     <%= f.submit "ログイン", class:"btn btn-primary pl-4 pr-4"%>
    </div>
- 
+
   <% end %>
- 
+
  <h5 class="mt-5"><span class="bg-light">会員登録がお済みでない方</span></h5>
    <%= render "public/shared/links" %><h5>から新規登録を行ってください。</h5>
 </div>
